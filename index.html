@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Age Calculator</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: consolas;
+      }
+    </style>
+  </head>
+  <body>
+    <label for="birth">
+      Date Of Birth:
+      <input type="date" id="birth" onchange="dateVal()" />
+
+      <!-- Add Age Calculation Process -->
+    </label>
+
+    <script>
+      function dateVal() {
+        let date = document.querySelector("input");
+        console.log(date.value);
+      }
+    </script>
+  </body>
+</html>
