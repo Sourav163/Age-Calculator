@@ -15,19 +15,52 @@
   <body>
     <label for="birth">
       Date Of Birth:
-      <input type="date" id="birth" onchange="dateVal()" />
+      <input type="date" id="birth" onchange="ageCalculation()" />
+      <!-- value="2020-12-31" -->
 
       <!-- Add Age Calculation Process -->
-      You're --Years, --Months, --Days Old.
+      <h2 id="calculatedAge"></h2>
 
-      <!-- It would be better if I can calculate the time as well -->
+      <!-- It would be better if I can calculate the months and days as well -->
     </label>
 
     <script>
-      function dateVal() {
+      const calculatedAge = document.getElementById("calculatedAge");
+      function ageCalculation() {
         let date = document.querySelector("input");
         console.log(date.value);
+
+        // User may like to choose manually from numpad instead of a old model calendar
+        const birthDateObject = date.value.split("-");
+        const birthDate = birthDateObject[2];
+        console.log(`birthDate = ${birthDate}`);
+        const birthMonth = birthDateObject[1];
+        console.log(`birthMonth = ${birthMonth}`);
+        const birthYear = birthDateObject[0];
+        console.log(`birthYear = ${birthYear}`);
+
+        // I should add a button where user can customize the current date also, if he/she wants.
+        const currentDateObject = new Date();
+        const currentDate = currentDateObject.getDate();
+        console.log(`currentDate = ${currentDate}`);
+        // const currentMonth = currentDateObject.getMonth();
+        const currentMonth = currentDateObject.getMonth() + 1;
+        console.log(`currentMonth = ${currentMonth}`);
+        const currentYear = currentDateObject.getFullYear();
+        console.log(`currentYear = ${currentYear}`);
+
+        let ageYear, ageMonth, ageDay;
+        ageYear = currentYear - birthYear;
+        if (birthMonth > currentMonth) {
+          ageYear -= 1;
+          ageMonth = 12 - birthMonth + currentMonth;
+        } else ageMonth = currentMonth - birthMonth;
+
+        // Code for day calculation
+
+        calculatedAge.innerHTML = `You're ${ageYear}Years, ${ageMonth}Months, --Days Old.`;
       }
+      // ageCalculation();
     </script>
   </body>
 </html>
