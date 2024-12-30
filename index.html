@@ -4,63 +4,36 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Age Calculator</title>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        font-family: consolas;
-      }
-    </style>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <label for="birth">
-      Date Of Birth:
-      <input type="date" id="birth" onchange="ageCalculation()" />
+    <!-- <nav>
+      <ul class="center">
+        <li><a href="#">Calendar</a></li>
+        <li><a href="#">Digit</a></li>
+      </ul>
+    </nav> -->
+
+    <div id="birthDateChoice" class="center">
+      <label for="birth"> Birth Date:</label>
+      <input type="date" id="birth" onchange="getBirthDate()" />
       <!-- value="2020-12-31" -->
+    </div>
 
-      <!-- Add Age Calculation Process -->
-      <h2 id="calculatedAge"></h2>
+    <div id="currentDateChoice" class="center">
+      <label for="current"> Current Date:</label>
+      <input type="date" id="current" onchange="getCurrentDate()" />
+    </div>
 
-      <!-- It would be better if I can calculate the months and days as well -->
-    </label>
+    <div class="center">
+      <button id="calculateBtn" onclick="ageCalculation()">Calculate</button>
+    </div>
 
-    <script>
-      const calculatedAge = document.getElementById("calculatedAge");
-      function ageCalculation() {
-        let date = document.querySelector("input");
-        console.log(date.value);
+    <!-- Add Age Calculation Process -->
+    <h2 id="calculatedAge" class="center"></h2>
 
-        // User may like to choose manually from numpad instead of a old model calendar
-        const birthDateObject = date.value.split("-");
-        const birthDate = birthDateObject[2];
-        console.log(`birthDate = ${birthDate}`);
-        const birthMonth = birthDateObject[1];
-        console.log(`birthMonth = ${birthMonth}`);
-        const birthYear = birthDateObject[0];
-        console.log(`birthYear = ${birthYear}`);
+    <!-- It would be better if I can calculate the months and days as well -->
 
-        // I should add a button where user can customize the current date also, if he/she wants.
-        const currentDateObject = new Date();
-        const currentDate = currentDateObject.getDate();
-        console.log(`currentDate = ${currentDate}`);
-        // const currentMonth = currentDateObject.getMonth();
-        const currentMonth = currentDateObject.getMonth() + 1;
-        console.log(`currentMonth = ${currentMonth}`);
-        const currentYear = currentDateObject.getFullYear();
-        console.log(`currentYear = ${currentYear}`);
-
-        let ageYear, ageMonth, ageDay;
-        ageYear = currentYear - birthYear;
-        if (birthMonth > currentMonth) {
-          ageYear -= 1;
-          ageMonth = 12 - birthMonth + currentMonth;
-        } else ageMonth = currentMonth - birthMonth;
-
-        // Code for day calculation
-
-        calculatedAge.innerHTML = `You're ${ageYear}Years, ${ageMonth}Months, --Days Old.`;
-      }
-      // ageCalculation();
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>
