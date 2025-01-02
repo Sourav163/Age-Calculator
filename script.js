@@ -28,7 +28,13 @@ currentYear = currentDateObject.getFullYear();
 console.log(`currentYear = ${currentYear}`);
 console.log(typeof currentYear);
 const current = document.getElementById("current");
-current.value = `${currentYear}-${currentMonth}-${currentDate}`;
+if (currentMonth / 10 < 1 && currentDate / 10 < 1) {
+  current.value = `${currentYear}-0${currentMonth}-0${currentDate}`;
+} else if (currentMonth / 10 < 1) {
+  current.value = `${currentYear}-0${currentMonth}-${currentDate}`;
+} else if (currentDate / 10 < 1) {
+  current.value = `${currentYear}-${currentMonth}-0${currentDate}`;
+} else current.value = `${currentYear}-${currentMonth}-${currentDate}`;
 
 // User may like to choose manually from numpad instead of a old model calendar
 function getCurrentDate() {
@@ -79,6 +85,10 @@ function ageCalculation() {
 
   if (birthDate > currentDate) {
     ageMonth -= 1;
+    if (ageMonth === -1) {
+      ageMonth = 11;
+      ageYear -= 1;
+    }
     switch (currentMonth) {
       case 1:
       case 2:
@@ -125,3 +135,10 @@ function ageCalculation() {
   else
     calculatedAge.innerHTML = `You're ${ageYear}Years, ${ageMonth}Months, ${ageDay}Days Old.`;
 }
+
+// digit
+// let birth_date, birth_month, birth_year;
+// let current_date, current_month, current_year;
+// current_date = document.getElementById("current_date");
+// current_date.value = `${currentDateObject.getDate()}`;
+// console.log(current_date.value);
