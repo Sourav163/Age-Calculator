@@ -21,21 +21,24 @@
         id="birth_date"
         min="1"
         max="31"
-        onchange="get_birth_date()"
+        value="01"
+        onchange="get_birth_date_info()"
       />
       <input
         type="number"
         id="birth_month"
         min="1"
         max="12"
-        onchange="get_birth_month()"
+        value="01"
+        onchange="get_birth_month_info()"
       />
       <input
         type="number"
         id="birth_year"
         min="1"
         max="9999"
-        onchange="get_birth_year()"
+        value="2001"
+        onchange="get_birth_year_info()"
       />
       <!-- value="2020-12-31" -->
     </div>
@@ -47,21 +50,21 @@
         id="current_date"
         min="1"
         max="31"
-        onchange="get_current_date()"
+        onchange="get_current_date_info()"
       />
       <input
         type="number"
         id="current_month"
         min="1"
         max="12"
-        onchange="get_current_month()"
+        onchange="get_current_month_info()"
       />
       <input
         type="number"
         id="current_year"
         min="1"
         max="9999"
-        onchange="get_current_year()"
+        onchange="get_current_year_info()"
       />
     </div>
 
@@ -71,5 +74,8 @@
 
     <!-- Add Age Calculation Process -->
     <h2 id="calculatedAge" class="center"></h2>
+
+    <script src="digit_script.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>
