@@ -1,4 +1,3 @@
-// digit
 const current_date_object = new Date();
 const birth_month = document.getElementById("birth_month");
 const birth_year = document.getElementById("birth_year");
@@ -6,20 +5,18 @@ const current_date = document.getElementById("current_date");
 const birth_date = document.getElementById("birth_date");
 const current_month = document.getElementById("current_month");
 const current_year = document.getElementById("current_year");
+let birth = { value: "" };
 
 let currentDate = current_date_object.getDate();
 if (currentDate / 10 < 1) current_date.value = `0${currentDate}`;
 else current_date.value = `${currentDate}`;
-console.log(typeof currentDate);
 
 let currentMonth = current_date_object.getMonth() + 1;
 if (currentMonth / 10 < 1) current_month.value = `0${currentMonth}`;
 else current_month.value = `${currentMonth}`;
-console.log(typeof currentMonth);
 
 let currentYear = current_date_object.getFullYear();
 current_year.value = `${currentYear}`;
-console.log(typeof currentDate);
 
 function get_current_date_info() {
   currentDate = parseInt(current_date.value);
@@ -40,15 +37,18 @@ let birthDate, birthMonth, birthYear;
 function get_birth_date_info() {
   birthDate = parseInt(birth_date.value);
   if (birthDate / 10 < 1) birth_date.value = `0${birthDate}`;
+  birth.value = `${birthDate}`;
 }
 function get_birth_month_info() {
   birthMonth = parseInt(birth_month.value);
   if (birthMonth / 10 < 1) birth_month.value = `0${birthMonth}`;
   date_fix(birth_date, birthDate, birthMonth, birthYear);
+  birth.value += `-${birthMonth}`;
 }
 function get_birth_year_info() {
   birthYear = parseInt(birth_year.value);
   date_fix(birth_date, birthDate, birthMonth, birthYear);
+  birth.value += `-${birthYear}`;
 }
 
 function date_fix(date_id, date, month, year) {
