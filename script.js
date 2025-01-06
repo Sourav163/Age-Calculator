@@ -1,11 +1,9 @@
 function ageCalculation() {
   const calculatedAge = document.getElementById("calculatedAge");
-  // if (birth.value === "" || current.value === "") {
-  //   calculatedAge.innerHTML = "Enter Birth Date Above...";
-  //   return;
-  // }
-
-  console.log(birthYear);
+  if (birth.value.split("-").length !== 3) {
+    calculatedAge.innerHTML = "Enter Birth Date Above...";
+    return;
+  }
 
   if (
     birthYear === currentYear &&
